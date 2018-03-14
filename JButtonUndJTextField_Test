@@ -1,0 +1,68 @@
+package java2enterprise_2;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+public class JButtonUndJTextField_Test extends JFrame implements ActionListener {
+	
+	private JPanel contentPane;
+	private JButton btnEnde;
+	private JTextField tfEingabe, tfAntwort;
+	
+	public void actionPerformed(ActionEvent e) {
+		// LeereMethode
+	}
+
+	// Definition des Konstruktors
+	public JButtonUndJTextField_Test() {
+		setTitle("JButton und JTextField");
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 280, 180);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.GREEN);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		tfEingabe = new JTextField();
+		tfEingabe.setBounds(10, 10, 260, 30);
+		contentPane.add(tfEingabe);
+		tfEingabe.setColumns(30);
+		
+		JButton btnEingabe = new JButton("Eingabe");
+		btnEingabe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tfAntwort.setText("Antwort: "+tfEingabe.getText());
+			}
+		});
+		btnEingabe.setBounds(10, 45, 260, 30);
+		contentPane.add(btnEingabe);
+		
+		btnEnde = new JButton("Ende");
+		btnEnde.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnEnde.setBounds(10, 80, 260, 30);
+		contentPane.add(btnEnde);
+		
+		tfAntwort = new JTextField();
+		tfAntwort.setText("Deine Antwort: ");
+		tfAntwort.setBounds(10, 115, 260, 30);
+		contentPane.add(tfAntwort);
+		tfAntwort.setColumns(10);
+	}
+	
+	public static void main(String[] args) {
+		JButtonUndJTextField_Test frame = new JButtonUndJTextField_Test();
+		frame.setVisible(true);
+	}
+}
